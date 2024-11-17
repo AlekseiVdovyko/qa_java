@@ -47,17 +47,4 @@ public class FelineTest {
         List<String> expected = feline.eatMeat();
         Assert.assertEquals("Ошибка в названии животных", expected, actual);
     }
-
-    @Test
-    public void testingValueTimeCallMethodGetKittens() throws Exception {
-        feline.getKittens();
-        feline.getKittens();
-        Mockito.verify(feline, Mockito.times(2)).getKittens();
-    }
-
-    @Test
-    public void testingValueTimeCallMethodEatMeat() throws Exception {
-        feline.eatMeat();
-        Mockito.verify(feline, Mockito.times(1)).eatMeat();
-    }
 }

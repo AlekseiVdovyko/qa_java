@@ -3,16 +3,13 @@ import com.example.Feline;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AlexLionTest {
 
-    @Spy
     public AlexLion alexLion = new AlexLion(new Feline());
 
     public AlexLionTest() throws Exception {
@@ -35,10 +32,7 @@ public class AlexLionTest {
 
     @Test
     public void testingGetFriendsAlexLion() {
-        List<String> actual = new ArrayList<>();
-        actual.add("Марти");
-        actual.add("Глории");
-        actual.add("Мелман");
+        List<String> actual = List.of("Марти", "Глории", "Мелман");
         List<String> expected = alexLion.getFriends();
         Assert.assertEquals("Ошибка в имени друзей", expected, actual);
     }

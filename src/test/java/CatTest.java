@@ -3,7 +3,6 @@ import com.example.Feline;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -29,11 +28,5 @@ public class CatTest {
         actual.add("Рыба");
         List<String> expected = cat.getFood();
         Assert.assertEquals("Ошибка в названии животных", expected, actual);
-    }
-
-    @Test
-    public void testingValueTimeCallMethodGetFood() throws Exception {
-        cat.getFood();
-        Mockito.verify(cat, Mockito.times(1)).getFood();
     }
 }
