@@ -3,7 +3,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.mockito.Mockito;
 
 import java.util.List;
 
@@ -29,8 +28,7 @@ public class AnimalWithParametersTest {
     @Test
     public void animalGetFoodTest() throws Exception {
         Animal animal = new Animal();
-        Animal animalSpy = Mockito.spy(animal);
-        List<String> actual = animalSpy.getFood(animalKind);
+        List<String> actual = animal.getFood(animalKind);
         Assert.assertEquals("Ошибка в пище животного", expected, actual);
     }
 }

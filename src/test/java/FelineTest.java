@@ -2,49 +2,47 @@ import com.example.Feline;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FelineTest {
 
-    @Spy
-    private Feline feline;
+    private Feline feline = new Feline();
+
+    @Test
+    public void getListEatMeat() throws Exception {
+        List<String> expected = List.of("Животные", "Птицы", "Рыба");
+        List<String> actual = feline.eatMeat();
+        Assert.assertEquals("Ошибка с вписке животных", expected, actual);
+    }
+
+    @Test
+    public void getFoodFelineTest() throws Exception {
+        List<String> expected = List.of("Животные", "Птицы", "Рыба");
+        List<String> actual = feline.getFood("Хищник");
+        Assert.assertEquals("Ошибка с вписке животных", expected, actual);
+    }
 
     @Test
     public void getFamilyAnimals() {
-        String actual = feline.getFamily();
         String expected = "Кошачьи";
+        String actual = feline.getFamily();
         Assert.assertEquals("Возвращен неверный результат", expected, actual);
     }
 
     @Test
     public void getValueKittensWithoutParameter() {
-        feline.getKittens();
-        Mockito.verify(feline, Mockito.times(1)).getKittens(1);
+        int expected = 1;
+        int actual = feline.getKittens();
+        Assert.assertEquals("Неправильное количество", expected, actual);
     }
 
     @Test
     public void getValueKittensWithParameterPositiveTest() {
-        Assert.assertEquals("Неправильное количество кошачьих", 1, feline.getKittens(1));
-    }
-
-    @Test
-    public void getValueKittensWithParameterNegativeTest() {
-        Assert.assertNotEquals("Неправильное количество кошачьих", 2, feline.getKittens(1));
-    }
-
-    @Test
-    public void getListPredatorAnimals() throws Exception {
-        List<String> actual = new ArrayList<>();
-        actual.add("Животные");
-        actual.add("Птицы");
-        actual.add("Рыба");
-        List<String> expected = feline.eatMeat();
-        Assert.assertEquals("Ошибка в названии животных", expected, actual);
+        int expected = 1;
+        int actual = feline.getKittens(1);
+        Assert.assertEquals("Неправильное количество", expected, actual);
     }
 }
